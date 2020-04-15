@@ -7,7 +7,10 @@
 本管理系统基于以下现实场景：消费者通过收银台窗口向操作员提出买电影票请求，操作员通过本系统将消费者的基本信息注册为会员，然后要求消费者办理会员卡，会员卡的作用是可以进行充值消费，并且根据消费的数量积累积分，积分又可以作为兑换其他商品的货币。
 
 ### 三、项目设计概要
-<
+![流程图](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/%E7%94%B5%E5%BD%B1%E9%99%A2%E4%BC%9A%E5%91%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE.png “流程图”)
+
+![blockchain](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/%E7%94%B5%E5%BD%B1%E9%99%A2%E4%BC%9A%E5%91%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE.png "区块链")
+
 ### 三、项目所需功能
 1. 会员管理：会员注册、修改、查询
 2. 会员卡管理：会员卡注册、消费、充值，挂失、解挂、补卡、消费记录查询、充值记录查询等
