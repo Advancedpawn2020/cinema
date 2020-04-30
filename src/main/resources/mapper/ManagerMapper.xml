@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrkworld.cinema.mapper.ManagerMapper" >
+  <resultMap id="BaseResultMap" type="com.zrkworld.cinema.pojo.Manager" >
+    <id column="managerid" property="managerId" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="selectByManagerId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select *
+    from manager
+    where managerid = #{managerId,jdbcType=VARCHAR}
+  </select>
+  <select id="managerLogin" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select *
+    from manager
+    where managerid = #{managerId,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByManagerId" parameterType="java.lang.String" >
+    delete from manager
+    where managerid = #{managerId,jdbcType=VARCHAR}
+  </delete>
+
+  <update id="updateManagerTime" parameterType="java.lang.String">
+    update manager
+    set time = now()
+    where managerid = #{managerId}
+  </update>
+  <sql id="Base_Column_List" >
+    managerid, password, name, role, time
+  </sql>
+  <insert id="insert" parameterType="com.zrkworld.cinema.pojo.Manager" >
+    insert into manager (managerid, password, name,
+      role, time)
+    values (#{managerOd,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+      #{role,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrkworld.cinema.pojo.Manager" >
+    insert into manager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="managerId != null" >
+        managerid,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="managerId != null" >
+        #{managerId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrkworld.cinema.pojo.Manager" >
+    update manager
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where managerid = #{managerid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrkworld.cinema.pojo.Manager" >
+    update manager
+    set password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP}
+    where managerid = #{managerId,jdbcType=VARCHAR}
+  </update>
+</mapper>

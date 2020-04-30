@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrkworld.cinema.mapper.CardMapper" >
+  <resultMap id="BaseResultMap" type="com.zrkworld.cinema.pojo.Card" >
+    <id column="cardid" property="cardId" jdbcType="VARCHAR" />
+    <result column="memberid" property="memberId" jdbcType="VARCHAR" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="lose" property="lose" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="selectCardByMemberId" parameterType="String" resultType="com.zrkworld.cinema.pojo.Card">
+    select *
+    from card
+    where memberid=#{memberId,jdbcType=VARCHAR}
+    order by balance desc
+  </select>
+
+  <select id="selectCardById" resultType="com.zrkworld.cinema.pojo.Card">
+    select *
+    from card
+    where cardid=#{cardId,jdbcType=VARCHAR}
+  </select>
+
+  <insert id="insertCard" parameterType="com.zrkworld.cinema.pojo.Card">
+   insert into card (cardid, memberid, balance,
+      integral, lose)
+    values (#{cardId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{balance,jdbcType=INTEGER},
+      #{integral,jdbcType=INTEGER}, #{lose,jdbcType=INTEGER})
+  </insert>
+
+<delete id="deleteCardById" parameterType="String">
+  delete from card
+  where cardid=#{cardId,jdbcType=VARCHAR}
+</delete>
+
+<update id="updateCardById" parameterType="com.zrkworld.cinema.pojo.Card">
+   update card
+  <set >
+    <if test="memberId != null" >
+      memberid = #{memberId,jdbcType=VARCHAR},
+    </if>
+    <if test="balance != null" >
+      balance = #{balance,jdbcType=INTEGER},
+    </if>
+    <if test="integral != null" >
+      integral = #{integral,jdbcType=INTEGER},
+    </if>
+    <if test="lose != null" >
+      lose = #{lose,jdbcType=INTEGER},
+    </if>
+  </set>
+    where cardid = #{cardId,jdbcType=VARCHAR}
+</update>
+
+  <sql id="Base_Column_List" >
+    cardid, memberid, balance, integral, lose
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from card
+    where cardid = #{cardid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from card
+    where cardid = #{cardid,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.zrkworld.cinema.pojo.Card" >
+    insert into card (cardid, memberid, balance, 
+      integral, lose)
+    values (#{cardid,jdbcType=VARCHAR}, #{memberid,jdbcType=VARCHAR}, #{balance,jdbcType=INTEGER}, 
+      #{integral,jdbcType=INTEGER}, #{lose,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrkworld.cinema.pojo.Card" >
+    insert into card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cardid != null" >
+        cardid,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="integral != null" >
+        integral,
+      </if>
+      <if test="lose != null" >
+        lose,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cardid != null" >
+        #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="lose != null" >
+        #{lose,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrkworld.cinema.pojo.Card" >
+    update card
+    <set >
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="lose != null" >
+        lose = #{lose,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cardid = #{cardid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrkworld.cinema.pojo.Card" >
+    update card
+    set memberid = #{memberid,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=INTEGER},
+      integral = #{integral,jdbcType=INTEGER},
+      lose = #{lose,jdbcType=INTEGER}
+    where cardid = #{cardid,jdbcType=VARCHAR}
+  </update>
+</mapper>

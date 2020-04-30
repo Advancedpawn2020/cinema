@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrkworld.cinema.mapper.MemberMapper" >
+  <resultMap id="BaseResultMap" type="com.zrkworld.cinema.pojo.Member" >
+    <id column="memberid" property="memberId" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+  </resultMap>
+
+  <!--findProductsByCidWithPage(String cid, int startIndex, int pageSize) throws Exception {
+        String sql = "select * from product where cid=? limit ? , ?";
+
+        findTotalRecords(String cid) throws Exception {
+        String sql = "select count(*) from product where cid =?";
+
+        -->
+<select id="selectByOrder" parameterType="com.zrkworld.cinema.pojo.MemberQuery" resultType="com.zrkworld.cinema.pojo.Member">
+  select
+  *
+  from member
+  <where>
+  <if test="name != null" >
+    and name = #{name,jdbcType=VARCHAR}
+  </if>
+  <if test="birthdayQuery != null" >
+    and date(birthday) between #{birthdayQuery} and now()
+  </if>
+  </where>
+  ORDER BY NAME,memberid
+  <if test="startIndex != null" >
+    limit #{startIndex},#{endIndex}
+  </if>
+</select>
+  <select id="selectCountByOrder" parameterType="com.zrkworld.cinema.pojo.MemberQuery" resultType="LONG">
+    select
+    count(name)
+    from
+    (
+    select
+    name
+    from
+    member
+    <where>
+      <if test="name != null" >
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="birthdayQuery != null" >
+        and date(birthday) between #{birthdayQuery} and now()
+      </if>
+    </where>
+    ORDER BY NAME,memberid
+    ) as a
+  </select>
+  <select id="selectMemberByLogin" parameterType="com.zrkworld.cinema.pojo.Member" resultType="com.zrkworld.cinema.pojo.Member">
+    select *
+    from member
+    <where>
+      <if test="memberId!=null">
+        and memberid=#{memberId,jdbcType=VARCHAR}
+      </if>
+      <if test="password!=null">
+        and password=#{password,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <insert id="insertMember" parameterType="com.zrkworld.cinema.pojo.Member">
+    insert into member (memberid, password, name,
+      sex, birthday)
+    values (#{memberId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+      #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE})
+  </insert>
+
+  <delete id="deleteMember" parameterType="String">
+    delete
+    from
+    member
+    <where>
+      memberid = #{memberId,jdbcType=VARCHAR}
+    </where>
+  </delete>
+
+  <update id="updateMember" parameterType="com.zrkworld.cinema.pojo.Member">
+    update member
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+    </set>
+    where memberid = #{memberId,jdbcType=VARCHAR}
+  </update>
+
+  <sql id="Base_Column_List" >
+    memberid, password, name, sex, birthday
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where memberid = #{memberid,jdbcType=VARCHAR}
+  </select>
+
+
+
+
+  <insert id="insert" parameterType="com.zrkworld.cinema.pojo.Member" >
+    insert into member (memberid, password, name, 
+      sex, birthday)
+    values (#{memberid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrkworld.cinema.pojo.Member" >
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
+        #{memberid,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrkworld.cinema.pojo.Member" >
+    update member
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+    </set>
+    where memberid = #{memberid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrkworld.cinema.pojo.Member" >
+    update member
+    set password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE}
+    where memberid = #{memberid,jdbcType=VARCHAR}
+  </update>
+</mapper>
