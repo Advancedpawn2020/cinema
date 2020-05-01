@@ -3,6 +3,11 @@ package com.zrkworld.cinema.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ */
 public class Member implements Serializable {
     /**
      * 与数据库的memberid映射

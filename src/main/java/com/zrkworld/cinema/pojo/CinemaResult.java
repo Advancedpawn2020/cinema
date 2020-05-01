@@ -3,9 +3,12 @@ package com.zrkworld.cinema.pojo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 /**
- * 用来返回判断的接口返回
  * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ * 用于携带返回接口请求的数据
  */
 public class CinemaResult implements Serializable {
     private static final long serialVersionUID = 1L;

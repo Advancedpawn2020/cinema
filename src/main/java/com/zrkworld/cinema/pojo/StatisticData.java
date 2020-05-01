@@ -1,10 +1,18 @@
 package com.zrkworld.cinema.pojo;
 
-public class StatisticData {
+import java.io.Serializable;
+
+/**
+ * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ * 对总消费额度的记录的封装
+ */
+public class StatisticData implements Serializable {
     Long memberNum;
     Long cardNum;
     Long movieNum;
-
+    private static final long serialVersionUID = 1L;
     @Override
     public String toString() {
         return "StatisticData{" +

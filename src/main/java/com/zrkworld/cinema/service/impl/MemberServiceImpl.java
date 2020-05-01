@@ -6,15 +6,16 @@ import com.zrkworld.cinema.pojo.Member;
 import com.zrkworld.cinema.pojo.MemberQuery;
 import com.zrkworld.cinema.pojo.PageResult;
 import com.zrkworld.cinema.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.UUID;
+
 
 /**
  * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
  */
 @Service
 public class MemberServiceImpl implements MemberService {

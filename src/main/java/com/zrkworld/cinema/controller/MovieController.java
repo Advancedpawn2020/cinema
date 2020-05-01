@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ */
 @RestController
 public class MovieController {
     @Resource

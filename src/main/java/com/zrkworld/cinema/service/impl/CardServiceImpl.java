@@ -8,9 +8,14 @@ import com.zrkworld.cinema.service.RecordService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+/**
+ * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ */
 @Service
 public class CardServiceImpl implements CardService {
     @Resource
@@ -138,4 +143,22 @@ public class CardServiceImpl implements CardService {
 
 
     }
+
+    @Override
+    public Long getCardNum() {
+        return cardMapper.selectCardCount();
+    }
+
+    @Override
+    public List<String> getCardIdByFuzzyQuery(String memberId,String cardId) {
+        List<String> cardList  = cardMapper.selectCardIdByFuzzyQuery(memberId,cardId);
+        return cardList;
+    }
+
+    @Override
+    public Card getCardByCardId(String cardId) {
+        return cardMapper.selectCardById(cardId);
+    }
+
+
 }

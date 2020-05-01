@@ -2,15 +2,18 @@ package com.zrkworld.cinema.service.impl;
 
 import com.zrkworld.cinema.mapper.MovieMapper;
 import com.zrkworld.cinema.pojo.CinemaResult;
-import com.zrkworld.cinema.pojo.MemberQuery;
 import com.zrkworld.cinema.pojo.Movie;
-import com.zrkworld.cinema.pojo.PageResult;
 import com.zrkworld.cinema.service.MovieService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.UUID;
+
+/**
+ * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ */
 @Service
 public class MovieServiceImpl implements MovieService {
     @Resource
@@ -37,4 +40,5 @@ public class MovieServiceImpl implements MovieService {
         movieMapper.updateMovieById(movie);
         return CinemaResult.ok();
     }
+
 }

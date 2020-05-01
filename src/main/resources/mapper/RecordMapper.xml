@@ -9,6 +9,13 @@
     <result column="spendtype" property="spendType" jdbcType="INTEGER" />
   </resultMap>
 
+  <select id="selectMovieCount" resultType="LONG">
+    select
+    count(*)
+    from record
+    where value &lt; 0 and spendtype=0
+  </select>
+
   <delete id="deleteRecordByCardId" parameterType="String">
     delete from record
     where cardid=#{cardId,jdbcType=VARCHAR}
@@ -27,4 +34,45 @@
     order by time desc
   </select>
 
+  <select id="selectConsumeCount" resultType="LONG">
+    select
+    sum(value)
+    from record
+    where spendtype=0 and value &lt; 0
+  </select>
+
+  <select id="selectIntegralExchangeCount" resultType="LONG">
+    select
+    sum(value)
+    from record
+    where spendtype=1 and value &lt; 0
+  </select>
+
+  <select id="selectRechargeCount" resultType="LONG">
+    select
+    sum(value)
+    from record
+    where spendtype=0 and value &gt; 0
+  </select>
+
+  <select id="selectConsumeCountByDate" parameterType="String" resultType="INTEGER">
+    select
+    sum(value)
+    from record
+    where spendtype=0 and value &lt; 0 and time between #{startDate} and #{endDate}
+  </select>
+
+  <select id="selectrechargeCountByDate" parameterType="String"  resultType="INTEGER">
+    select
+    sum(value)
+    from record
+    where spendtype=0 and value &gt; 0 and time between #{startDate} and #{endDate}
+  </select>
+
+  <select id="selectintegralCountByDate" parameterType="String"  resultType="INTEGER">
+    select
+    sum(value)
+    from record
+    where spendtype=1 and value &lt; 0 and time between #{startDate} and #{endDate}
+  </select>
 </mapper>

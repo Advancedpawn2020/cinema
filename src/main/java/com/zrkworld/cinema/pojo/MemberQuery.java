@@ -1,13 +1,19 @@
 package com.zrkworld.cinema.pojo;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ * 用于分页查询所需字段的封装，来替代pageHelper的
  */
-public class MemberQuery {
+public class MemberQuery implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * 姓名查询条件
      */

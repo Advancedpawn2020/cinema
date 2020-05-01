@@ -1,34 +1,81 @@
 package com.zrkworld.cinema.mapper;
 
 import com.zrkworld.cinema.pojo.Record;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+/**
+ * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ */
 public interface RecordMapper {
+    /**
+     * 根据会员卡id删除消费记录
+     * @param cardId
+     */
     void deleteRecordByCardId(String cardId);
 
+    /**
+     * 新增消费记录
+     * @param record
+     */
     void insertRecord(Record record);
 
+    /**
+     * 根据会员id查询消费记录
+     * @param memberId
+     * @return
+     */
     List<Record> selectRecordByMemberId(String memberId);
-   /* int countByExample(RecordExample example);
 
-    int deleteByExample(RecordExample example);
+    /**
+     * 查询电影数量
+     * @return
+     */
+    Long selectMovieCount();
 
-    int deleteByPrimaryKey(String id);
 
-    int insert(Record record);
+    /**
+     * 所有消费总额
+     * @return
+     */
+    Long selectConsumeCount();
 
-    int insertSelective(Record record);
+    /**
+     * 所有积分消耗的总额
+     * @return
+     */
+    Long selectIntegralExchangeCount();
 
-    List<Record> selectByExample(RecordExample example);
+    /**
+     * 所有充值的总额
+     * @return
+     */
+    Long selectRechargeCount();
 
-    Record selectByPrimaryKey(String id);
+    /**
+     * 根据开始和结束时间，查询消费额
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    Integer selectConsumeCountByDate(String startDate, String endDate);
 
-    int updateByExampleSelective(@Param("record") Record record, @Param("example") RecordExample example);
+    /**
+     * 根据开始和结束时间，查询充值额
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    Integer selectrechargeCountByDate(String startDate, String endDate);
 
-    int updateByExample(@Param("record") Record record, @Param("example") RecordExample example);
+    /**
+     * 根据小时和结束时间，查询积分兑换额度
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    Integer selectintegralCountByDate(String startDate, String endDate);
 
-    int updateByPrimaryKeySelective(Record record);
-
-    int updateByPrimaryKey(Record record);*/
 }

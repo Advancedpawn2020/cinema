@@ -1,11 +1,14 @@
 package com.zrkworld.cinema.mapper;
 
-import com.zrkworld.cinema.pojo.CinemaResult;
-import com.zrkworld.cinema.pojo.MemberQuery;
 import com.zrkworld.cinema.pojo.Movie;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+/**
+ * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ */
 public interface MovieMapper {
     /**
      * 需求：使用MyBatis往MySQL数据库中插入一条记录后，需要返回该条记录的自增主键值。
@@ -22,28 +25,16 @@ public interface MovieMapper {
      */
     List<Movie> selectAllMovie();
 
+    /**
+     * 根据movieId删除电影信息
+     * @param movieId
+     */
     void deleteMovieById(String movieId);
 
+    /**
+     * 根据movieId更新电影信息
+     * @param movie
+     */
     void updateMovieById(Movie movie);
-  /*  int countByExample(MovieExample example);
 
-    int deleteByExample(MovieExample example);
-
-    int deleteByPrimaryKey(String movieid);
-
-    int insert(Movie record);
-
-    int insertSelective(Movie record);
-
-    List<Movie> selectByExample(MovieExample example);
-
-    Movie selectByPrimaryKey(String movieid);
-
-    int updateByExampleSelective(@Param("record") Movie record, @Param("example") MovieExample example);
-
-    int updateByExample(@Param("record") Movie record, @Param("example") MovieExample example);
-
-    int updateByPrimaryKeySelective(Movie record);
-
-    int updateByPrimaryKey(Movie record);*/
 }

@@ -7,6 +7,11 @@ import java.util.List;
 import com.zrkworld.cinema.pojo.MemberQuery;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
+ */
 public interface MemberMapper {
     /**
      * 以检索规则进行查找
@@ -34,28 +39,17 @@ public interface MemberMapper {
      */
     void deleteMember(String memberId);
 
+    /**
+     * 根据会员id更新会员信息
+     * @param member
+     */
     void updateMember(Member member);
 
+    /**
+     * 根据会员id和密码登录
+     * @param member
+     * @return
+     */
     Member selectMemberByLogin(Member member);
-    /*int countByExample(MemberExample example);
 
-    int deleteByExample(MemberExample example);
-
-    int deleteByPrimaryKey(String username);
-
-    int insert(Member record);
-
-    int insertSelective(Member record);
-
-    List<Member> selectByExample(MemberExample example);
-
-    Member selectByPrimaryKey(String username);
-
-    int updateByExampleSelective(@Param("record") Member record, @Param("example") MemberExample example);
-
-    int updateByExample(@Param("record") Member record, @Param("example") MemberExample example);
-
-    int updateByPrimaryKeySelective(Member record);
-
-    int updateByPrimaryKey(Member record);*/
 }

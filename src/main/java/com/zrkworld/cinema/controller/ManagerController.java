@@ -11,11 +11,26 @@ import javax.annotation.Resource;
 
 /**
  * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
  */
 @RestController
 public class ManagerController {
     @Resource
     ManagerService managerService;
+
+    /**
+     *  //获取管理员数据，请求参数managerId
+     * export const managerData = query=>{
+     *     return request({
+     *         url:'getManagerData',
+     *         method:'get',
+     *         params:query
+     *     });
+     * };
+     * @param managerId
+     * @return
+     */
     @RequestMapping("getManagerData")
     public CinemaResult getManagerData(String managerId){
         return CinemaResult.ok(managerService.selectByManagerId(managerId));
@@ -30,16 +45,3 @@ public class ManagerController {
         }
     }
 }
-/*
-//获取管理员数据，请求参数managerId
-export const managerData = query=>{
-    return request({
-        url:'getManagerData',
-        method:'get',
-        params:query
-    });
-};
-
-
-
-* */

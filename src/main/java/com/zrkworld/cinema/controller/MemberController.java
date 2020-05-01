@@ -13,11 +13,31 @@ import java.util.ArrayList;
 
 /**
  * @author zrk
+ * @version 1.0
+ * @date 2020/5/1 0001 11:45
  */
 @RestController
 public class MemberController {
     @Resource
     MemberService memberService;
+
+    /**
+     * //查询会员列表，参数pageIndex、pageSize、name、birtydayQuery，
+     * // 返回key为list 的数组和key为pageTotal的整型，birtydayQuery:空表示无限制，0示当天过生日，7表示7天内过生日
+     *
+     * export const memberData = query=>{
+     *     return request({
+     *         url:'memberData',
+     *         method:'get',
+     *         params:query
+     *     });
+     * };
+     * @param pageIndex
+     * @param pageSize
+     * @param name
+     * @param birthdayQuery
+     * @return
+     */
     @RequestMapping("memberData")
     public CinemaResult getMemberData(String pageIndex, String pageSize, String name, String birthdayQuery){
         MemberQuery query = new MemberQuery();
