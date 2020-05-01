@@ -1,47 +1,38 @@
-# 电影院会员管理系统说明文档
+# cinema
+  <a href="https://github.com/Advancedpawn2020/cinema/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+  </a>
+  <a href="https://github.com/Advancedpawn2020/cinema/releases">
+    <img src="https://img.shields.io/github/release/Advancedpawn2020/cinema.svg" alt="GitHub release">
+  </a>
 
-### 一、项目技术方案
-本作业后端使用springboot+mybatis+redis，持久数据库使用mysql，前端使用vue.js+element-ui。
+## 前言
+本项目是学校布置的一道大作业，代码架构设计简单，注释齐全，结构清晰，适合同为java初学者参考。
+cinema项目是一套电影院会员管理系统，使用前后端分离架构开发，前端基于Vue.js+Element UI技术，后端使用springboot+mybatis实现，包含管理员、会员管理、会员卡管理、电影票、消费记录、数据统计等模块
+[cinema-web前端项目地址](https://github.com/Advancedpawn2020/cinema-web)
 
-### 二、项目设计背景
-本管理系统基于以下现实场景：消费者通过收银台窗口向操作员提出买电影票请求，操作员通过本系统将消费者的基本信息注册为会员，然后要求消费者办理会员卡，会员卡的作用是可以进行充值消费，并且根据消费的数量积累积分，积分又可以作为兑换其他商品的货币。
+## 项目截图
 
-### 三、项目设计概要
-![流程图](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/%E7%94%B5%E5%BD%B1%E9%99%A2%E4%BC%9A%E5%91%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%9B%BE.png “流程图”)
+### 系统首页
 
-### 三、项目所需功能
-1. 会员管理：会员注册、修改、查询
-2. 会员卡管理：会员卡注册、消费、充值，挂失、解挂、补卡、消费记录查询、充值记录查询等
-3. 会员积分管理：积分查询、积分兑换
-4. 会员关怀：会员生日提醒、会员生日查询
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/interface1.png?raw=true)
 
-### 四、模块设计及实现
-1. 会员模块
-   * 会员列表：显示出当前系统中所有已注册的会员信息
-   * 查询：会员列表上方文本框可输入会员姓名或性别或id号进行查询
-   * 查看：点击按钮进入会员卡界面，显示出会员卡列表
-   * 注册：点击注册按钮进入注册页面，提交表单后，判断是否曾经注册过，在服务端写入数据库
-   * 修改：点击列表中某一个会员项左侧修改按钮，可弹出一个模态窗口进行修改
-   * 删除：点击列表中某一个会员项左侧删除按钮，在弹出确认对话框后，发送请求到服务端内删除数据
-   * 会员生日提醒：进入系统后，即判断当前时期是否是用户生日，如果是，则在会员名称前显示生日祝福
-   * 会员生日查询：可查询未来7天的哪些会员过生日，或者指定未来的某一天
-   > 数据表包含字段：username、password、name、sex、birthday
-2. 会员卡模块
-   * 会员卡列表：显示出当前用户所持有的所有的会员卡信息及状态
-   * 注册：用户可以点击注册，每个用户可注册多个会员卡
-   * 充值：在会员卡界面中，通过充值入口可以对会员卡余额进行充值，输入框中输入金额，提交表单后在服务端修改数据库，同时将消费记录记录交易数据库中
-   * 消费：在会员卡界面中，通过充值后的余额购买，在购买方式单选框中选择人民币，用户点击购买后，在服务端将相应金额从数据库中减去，同时将消费记录记录交易数据库中
-   * 挂失：在会员卡界面中，可以通过挂失入口来对会员卡进行冻结，发起请求后，在服务端将数据库中的冻结字段设为1
-   * 解挂：在会员卡界面中，如果当前正处于挂失状态，则显示出解挂入口，用户点击此入口后，发出请求，将冻结字段设为0
-   * 补卡：在会员卡界面中，如果当前正处于挂失状态，则显示出补卡入口，重新进行注册会员卡，服务端查询出与会员信息对应的会员卡数据，将数据导入到新会员卡中
-   * 积分兑换：电影票可以通过积分购买，弹出电影票购买窗口，在单选框中选择积分
-   * 交易记录查询：在会员卡界面中，通过点击消费记录查询按钮，可以以表格形式显示出当前用户所有记录
-   > 会员卡数据表包含字段：cardid、username、balance、integral、lose 
-   > 交易记录表字段：id、cardid、value、time、spendtype
-3. 电影票模块
-   * 商品信息列表：在会员卡列表中会员卡项左侧点击购买弹出电影票模态窗口，显示当前所有电影票的商品信息
-   * 购买：有两种购买选择方式：积分与余额，选择不同方式时，表单提交不同的type，服务端对其进行判断，调用相应的业务逻辑
-   > 电影票表字段：ticketid、price、integral
-### 五、系统界面
-                                                                                   
-                                                                                                                                 
+### 会员界面
+
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/interface2.png?raw=true)
+
+### 会员卡界面
+
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/interface3.png?raw=true)
+
+### 流程图
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/flowchart.png?raw=true)
+                         
+## 使用说明
+* 数据库文件cinema.sql已整合到项目中，使用mysql导入即可生成数据库
+* 本项目已经整合了前后端，前端文件经过webpack构建后，生成了static文件夹和index.html放入了webapp下。
+* 要对前端页面进行修改，需要同时git[cinema-web前端项目地址](https://github.com/Advancedpawn2020/cinema-web)，修改完成后
+同样将生成的文件放到本项目的webapp下。                                                                                
+## License
+
+[MIT](https://github.com/Advancedpawn2020/cinema/blob/master/LICENSE)
