@@ -27,6 +27,7 @@
       now(), #{spendType,jdbcType=INTEGER})
 
   </insert>
+
   <select id="selectRecordByMemberId" parameterType="String" resultType="com.zrkworld.cinema.pojo.Record">
     SELECT cardid,value,DATE_FORMAT(time,'%Y-%m-%d %T') as time,spendtype FROM record
     WHERE cardid IN
