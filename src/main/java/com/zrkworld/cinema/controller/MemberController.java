@@ -5,6 +5,7 @@ import com.zrkworld.cinema.pojo.Member;
 import com.zrkworld.cinema.pojo.MemberQuery;
 import com.zrkworld.cinema.service.MemberService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @date 2020/5/1 0001 11:45
  */
+@CrossOrigin
 @RestController
 public class MemberController {
     @Resource
@@ -88,7 +90,7 @@ public class MemberController {
     }
 
     /**
-     * //会员登录，参数memberId、password，返回200
+     * //会员登录，参数memberId，返回200
      * export const loginMember = query=>{
      *     return request({
      *         url:'loginMember',
@@ -102,7 +104,7 @@ public class MemberController {
         if(memberService.loginMember(member)!=null){
             return CinemaResult.ok();
         }else{
-            return CinemaResult.build(500,"账号或者密码错误");
+            return CinemaResult.build(500,"无此账号");
         }
     }
 

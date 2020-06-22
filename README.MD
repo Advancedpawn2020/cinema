@@ -13,17 +13,25 @@ cinema项目是一套电影院会员管理系统，使用前后端分离架构�
 
 ## 项目截图
 
+### 登录页面
+
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/1.png?raw=true)
+
 ### 系统首页
 
-![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/interface1.png?raw=true)
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/2.png?raw=true)
 
 ### 会员界面
 
-![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/interface2.png?raw=true)
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/3.png?raw=true)
 
 ### 会员卡界面
 
-![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/interface3.png?raw=true)
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/4.png?raw=true)
+
+### 会员关怀
+
+![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/9.png?raw=true)
 
 ### 流程图
 ![Image text](https://github.com/Advancedpawn2020/cinema/blob/master/src/main/webapp/projectimg/flowchart.png?raw=true)
@@ -32,7 +40,14 @@ cinema项目是一套电影院会员管理系统，使用前后端分离架构�
 * 数据库文件cinema.sql已整合到项目中，使用mysql导入即可生成数据库
 * 本项目已经整合了前后端，前端文件经过webpack构建后，生成了static文件夹和index.html放入了webapp下。
 * 要对前端页面进行修改，需要同时git[cinema-web前端项目地址](https://github.com/Advancedpawn2020/cinema-web)，修改完成后
-同样将生成的文件放到本项目的webapp下。                                                                                
-## License
+同样将生成的文件放到本项目的webapp下。      
 
+## 运行项目
+* 方法一: cinema项目中已经整合了vue打包的静态资源，直接启动项目，并在浏览器上输入http://localhost:8081/cinema 即可运行。                                                                         
+* 方法二: cinema-web项目是cinema项目的vue单页面前端项目，可以在文件夹目录下命令行输入：
+`npm run install`                                                                                          
+`npm run dev`
+后，修改utils/request.js下baseURL=”/api”,开启node反向代理服务器,解决跨域问题,然后启动cinema后端项目，在浏览器上输入 http://localhost:8080 即可以前后端分离方式运行(也可以npm run build后将dist文件夹放到nginx下运行)
+
+## License
 [MIT](https://github.com/Advancedpawn2020/cinema/blob/master/LICENSE)

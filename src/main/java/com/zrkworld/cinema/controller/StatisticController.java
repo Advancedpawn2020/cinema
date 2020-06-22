@@ -8,6 +8,7 @@ import com.zrkworld.cinema.service.MemberService;
 import com.zrkworld.cinema.service.MovieService;
 import com.zrkworld.cinema.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
 /**
  * @author Administrator
  */
+@CrossOrigin
 @RestController
 public class StatisticController {
     @Resource

@@ -46,7 +46,7 @@ public interface MemberMapper {
     void updateMember(Member member);
 
     /**
-     * 根据会员id和密码登录
+     * 根据会员id查看
      * @param member
      * @return
      */

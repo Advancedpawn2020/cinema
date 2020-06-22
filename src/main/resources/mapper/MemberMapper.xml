@@ -55,15 +55,7 @@
   </select>
   <select id="selectMemberByLogin" parameterType="com.zrkworld.cinema.pojo.Member" resultType="com.zrkworld.cinema.pojo.Member">
     select *
-    from member
-    <where>
-      <if test="memberId!=null">
-        and memberid=#{memberId,jdbcType=VARCHAR}
-      </if>
-      <if test="password!=null">
-        and password=#{password,jdbcType=VARCHAR}
-      </if>
-    </where>
+    from member where memberid=#{memberId,jdbcType=VARCHAR}
   </select>
   <insert id="insertMember" parameterType="com.zrkworld.cinema.pojo.Member">
     insert into member (memberid, password, name,

@@ -6,6 +6,7 @@ import com.zrkworld.cinema.pojo.Card;
 import com.zrkworld.cinema.pojo.CinemaResult;
 import com.zrkworld.cinema.pojo.PageResult;
 import com.zrkworld.cinema.service.CardService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/5/1 0001 11:45
  */
+@CrossOrigin
 @RestController
 public class CardController {
     @Resource

@@ -34,7 +34,7 @@ insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('09
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('09961c29e8494649b29851388ef440fb','569b67f5c340462f9c343a98ab6e64db',1035,10025,0);
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('0b5705e0ed8f4b6fafc4126147b7d6fc','4e0553653d27447896440c4a16eda042',999,0,0);
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('4f59de19d3534abfb948f4c9a38e53dc','569b67f5c340462f9c343a98ab6e64db',1231,0,0);
-insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('8b06e3dcd4334c368d666081f666b500','567ced95cf1541bc94ccb3dfa767b53f',2551,333,0);
+insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('8b06e3dcd4334c368d666081f666b500','567ced95cf1541bc94ccb3dfa767b53f',2551,0,0);
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('8c0328f28b60400f983a806d67f705cc','288bced48b0243bdaefb4d602fa30c62',4910,3934,0);
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('9a6a2bfb4e95421d92774444c229ddfd','567ced95cf1541bc94ccb3dfa767b53f',100,0,0);
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('9c535625f7cc477eb69921849a40871d','edabd56c406449a0ab105bb7bfe92346',1314250,0,0);
@@ -46,7 +46,7 @@ insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('ba
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('cb09d3ef48f24a14a58cde8ab4bc0a6f','569b67f5c340462f9c343a98ab6e64db',0,0,0);
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('d5369d546dd94b68a1ae652b54f55ff7','567ced95cf1541bc94ccb3dfa767b53f',0,0,0);
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('f0cc8a64e9744fac89ec05c99b9a13e1','569b67f5c340462f9c343a98ab6e64db',0,0,0);
-insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('f226a06fed11438882f0d3cffd0ece4f','567ced95cf1541bc94ccb3dfa767b53f',180,469,0);
+insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('f226a06fed11438882f0d3cffd0ece4f','567ced95cf1541bc94ccb3dfa767b53f',180,302,0);
 insert  into `card`(`cardid`,`memberid`,`balance`,`integral`,`lose`) values ('fb0838a8d15e4306aff60bde281b2f27','94ce3d7b848649edb01a1e2de6b7e143',1314,0,0);
 
 /*Table structure for table `manager` */
@@ -62,7 +62,7 @@ CREATE TABLE `manager` (
 
 /*Data for the table `manager` */
 
-insert  into `manager`(`managerid`,`password`,`name`,`role`,`time`) values ('admin','123123','张三','操作员','2020-05-01 14:57:50');
+insert  into `manager`(`managerid`,`password`,`name`,`role`,`time`) values ('admin','123123','张三','操作员','2020-06-11 11:06:23');
 
 /*Table structure for table `member` */
 
@@ -77,6 +77,7 @@ CREATE TABLE `member` (
 
 /*Data for the table `member` */
 
+insert  into `member`(`memberid`,`password`,`name`,`sex`,`birthday`) values ('2525943c9c0f4f6a9530262628df56db','123123','梅超风','女','2020-06-01');
 insert  into `member`(`memberid`,`password`,`name`,`sex`,`birthday`) values ('288bced48b0243bdaefb4d602fa30c62','123123','小智','男','2020-03-05');
 insert  into `member`(`memberid`,`password`,`name`,`sex`,`birthday`) values ('39d86e911df04588bc2c75407318465f','123123','胖大海','男','2020-04-02');
 insert  into `member`(`memberid`,`password`,`name`,`sex`,`birthday`) values ('467e64ae0d1d440495be860179d5be78','123123','慕容复','男','2020-04-28');
@@ -124,7 +125,7 @@ CREATE TABLE `record` (
   PRIMARY KEY (`id`),
   KEY `cardid` (`cardid`),
   CONSTRAINT `record_ibfk_1` FOREIGN KEY (`cardid`) REFERENCES `card` (`cardid`)
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
 
 /*Data for the table `record` */
 
@@ -247,6 +248,9 @@ insert  into `record`(`id`,`cardid`,`value`,`time`,`spendtype`) values (118,'096
 insert  into `record`(`id`,`cardid`,`value`,`time`,`spendtype`) values (119,'8b06e3dcd4334c368d666081f666b500',-475,'2020-05-01 10:47:44',1);
 insert  into `record`(`id`,`cardid`,`value`,`time`,`spendtype`) values (120,'0967a8dd2cc04fc887cb69f35ae831fd',500,'2020-05-01 13:37:18',0);
 insert  into `record`(`id`,`cardid`,`value`,`time`,`spendtype`) values (121,'4f59de19d3534abfb948f4c9a38e53dc',1231,'2020-05-01 13:37:30',0);
+insert  into `record`(`id`,`cardid`,`value`,`time`,`spendtype`) values (122,'0967a8dd2cc04fc887cb69f35ae831fd',0,'2020-06-11 11:12:14',1);
+insert  into `record`(`id`,`cardid`,`value`,`time`,`spendtype`) values (123,'8b06e3dcd4334c368d666081f666b500',-333,'2020-06-11 11:12:14',1);
+insert  into `record`(`id`,`cardid`,`value`,`time`,`spendtype`) values (124,'f226a06fed11438882f0d3cffd0ece4f',-167,'2020-06-11 11:12:14',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
