@@ -40,7 +40,8 @@ cinema项目是一套电影院会员管理系统，使用前后端分离架构�
 * 数据库文件cinema.sql已整合到项目中，使用mysql导入即可生成数据库
 * 本项目已经整合了前后端，前端文件经过webpack构建后，生成了static文件夹和index.html放入了webapp下。
 * 要对前端页面进行修改，需要同时git[cinema-web前端项目地址](https://github.com/Advancedpawn2020/cinema-web)，修改完成后
-同样将生成的文件放到本项目的webapp下。      
+同样将生成的文件放到本项目的webapp下。    
+* 需上交的程序设计文档可参考目录下:cinema项目文档.docx  
 
 ## 运行项目
 * 方法一: cinema项目中已经整合了vue打包的静态资源，直接启动项目，并在浏览器上输入http://localhost:8081/cinema 即可运行。                                                                         
