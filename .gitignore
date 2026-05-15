@@ -29,3 +29,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Frontend ###
+cinema-web/node_modules/
+cinema-web/node/
+cinema-web/.idea/
+cinema-web/dist/

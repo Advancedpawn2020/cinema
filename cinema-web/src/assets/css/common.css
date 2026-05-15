@@ -1,0 +1,9 @@
+/*全局样式文件，
+在elementUI中，row-class-name、row-style、cell-class-name等属性要想生效
+必须使用全局class才能生效。因为之前的代码都是在组件中编写的，
+所以去除<style scoped></style>中的scoped即可该组件中的样式变为全局属性。
+但无法在一个组件中混合使用局部域和全局域的style，需要在局部style中引入这个全局样式
+*/
+.el-table .warning-row {
+    background: oldlace;
+}

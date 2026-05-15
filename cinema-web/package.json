@@ -1,0 +1,29 @@
+{
+  "name": "cinema-web",
+  "version": "4.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve --mode develpment",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "element-ui": "^2.11.0",
+    "mavon-editor": "^2.6.17",
+    "moment": "^2.24.0",
+    "vue": "^2.6.10",
+    "vue-cropperjs": "^3.0.0",
+    "vue-i18n": "^8.10.0",
+    "vue-quill-editor": "^3.0.6",
+    "vue-router": "^3.0.3",
+    "vue-schart": "^2.0.0",
+    "vuedraggable": "^2.17.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.9.0",
+    "@vue/cli-service": "^3.9.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
